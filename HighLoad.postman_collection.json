@@ -1,0 +1,404 @@
+{
+	"info": {
+		"_postman_id": "57302491-541a-4d97-9f70-2f509ad8665c",
+		"name": "HighLoad",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15289761"
+	},
+	"item": [
+		{
+			"name": "E-commerce store for online shopping",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response=JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\",response.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"client2@gmail.com\",\n    \"password\":\"client2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "address",
+										"value": "client1@gmail.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "passwors",
+										"value": "client1",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "client4@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "client4",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+777777777",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Omarova",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/clients/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"clients",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Profile",
+							"item": [
+								{
+									"name": "Profile_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"bio\":\"First\" ,\n    \"birth_date\": null,\n    \"user\": {\n        \"email\": \"client2@gmail.com\",\n        \"first_name\": null,\n        \"last_name\": null,\n        \"phone\": \"+71234789\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/profile/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"profile",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Profile_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/profile/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"profile",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Card",
+							"item": [
+								{
+									"name": "Card_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/card/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"card",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Card_updated",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"number\": null,\n    \"expire_date\": null,\n    \"balance\": 123455466,\n    \"cvv\": null,\n    \"full_name\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/card/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"card",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Cart",
+							"item": [
+								{
+									"name": "Cart_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/cart/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"cart",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cart_update",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"products\": [],\n    \"client\": {\n        \"email\": \"client2@gmail.com\",\n        \"first_name\": null,\n        \"last_name\": null,\n        \"phone\": \"+777777778\",\n        \"address\": \"Omarova Updated!\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/cart/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"cart",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Client",
+							"item": [
+								{
+									"name": "Client_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/clients/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"clients",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Client_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "client4@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "client4",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "+723456778123",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "Omarova",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/clients/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"clients",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
