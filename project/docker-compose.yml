@@ -33,4 +33,3 @@ services:
       - network-backend
 networks:
   network-backend:
-    external: true
