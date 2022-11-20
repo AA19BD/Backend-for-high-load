@@ -45,7 +45,7 @@ DATABASES = {
 
 4. Make migrations in Docker:
 ```
-    docker exec it CONTAINER_ID /bin/bash
+    docker exec -it CONTAINER_ID /bin/bash
     CONTAINER_ID:/code# python3 manage.py makemigrations auth_
     CONTAINER_ID:/code# python3 manage.py migrate auth_
     CONTAINER_ID:/code# python3 manage.py makemigrations
@@ -54,7 +54,7 @@ DATABASES = {
 
 5. Create superuser in Docker:
 ```
-    docker exec it CONTAINER_ID /bin/bash
+    docker exec -it CONTAINER_ID /bin/bash
     CONTAINER_ID:/code# python3 manage.py createsuperuser
     email: your_email@gmail.com
     password: your_password 
