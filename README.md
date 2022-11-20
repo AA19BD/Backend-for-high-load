@@ -60,3 +60,15 @@ DATABASES = {
     password: your_password 
 ```
 
+6. Open a browser to http://127.0.0.1:8000/admin/ to open the admin site
+<div>
+  <img style="width: 100%" src="./DjangoAdminPage.png" />
+</div>
+
+7. Create a few test objects of each type 
+8. Before testing endpoints login (token)
+9. Try use Postman/Swagger to test endpoints
+<div>
+  <img style="width: 100%" src="./Postman.png" />
+</div>
+
