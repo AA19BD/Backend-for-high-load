@@ -1,0 +1,13 @@
+INFO -- 2022-11-20 17:43:08,965: profile is returned, id: alisher_client@gmail.com
+INFO -- 2022-11-20 17:43:23,110: profile is updated, id: alisher_client@gmail.com
+INFO -- 2022-11-20 17:43:27,176: profile is updated, id: alisher_client@gmail.com
+INFO -- 2022-11-20 17:43:32,190: profile is updated, id: alisher_client@gmail.com
+INFO -- 2022-11-20 17:43:38,772: card is returned, user id: 7
+INFO -- 2022-11-20 17:43:49,783: card is updated, user id: 7
+INFO -- 2022-11-20 17:43:52,655: card is returned, user id: 7
+INFO -- 2022-11-20 17:44:37,634: client is returned, id: alisher_client@gmail.com
+INFO -- 2022-11-20 17:44:40,864: client is updated, id: alisher_client@gmail.com
+INFO -- 2022-11-20 17:45:57,965: courier is created, id: courier1@gmail.com
+INFO -- 2022-11-20 17:46:09,993: profile is returned, id: courier1@gmail.com
+INFO -- 2022-11-20 17:46:17,548: profile is returned, id: courier1@gmail.com
+INFO -- 2022-11-20 17:46:25,073: profile is updated, id: courier1@gmail.com

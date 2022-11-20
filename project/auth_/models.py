@@ -28,10 +28,16 @@ class MainUserManager(BaseUserManager):
         extra_fields.setdefault('is_superuser', False)
         if self.model is Client:
             extra_fields.setdefault('role', USER_ROLE_CLIENT)
+        elif self.model is Staff:
+            extra_fields.setdefault('is_staff', True)
+            extra_fields.setdefault('role', USER_ROLE_STAFF)
+        elif self.model is Courier:
+            extra_fields.setdefault('role', USER_ROLE_COURIER)
         return self._create_user(email, password, **extra_fields)
 
     def create_superuser(self, email, password, **extra_fields):
         extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('role', USER_ROLE_SUPER_USER)
 
         if extra_fields.get('is_superuser') is not True:
@@ -48,7 +54,7 @@ class MainUser(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(_('active'), default=True)
     phone = models.CharField(_('phone number'), max_length=30, blank=True, null=True, validators=[validate_phone_number])
     role = models.SmallIntegerField(choices=USER_ROLES, default=USER_ROLE_CLIENT)
-    is_staff = models.BooleanField(_('is_staff'), default=False)
+    is_staff = models.BooleanField(_('is_staff'), default=True)
 
     objects = MainUserManager()
 
@@ -58,6 +64,33 @@ class MainUser(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
+
+
+class Staff(MainUser):
+    salary = models.PositiveIntegerField(_('salary'), default=0)
+    role = USER_ROLE_STAFF
+    is_staff = True
+
+    class Meta:
+        verbose_name = _('staff')
+        verbose_name_plural = _('staff')
+
+    def __str__(self):
+        return self.email.__str__()
+
+
+class Courier(MainUser):
+    salary = models.PositiveIntegerField(default=0)
+    review = models.PositiveIntegerField(default=0, validators=[validate_review])
+    role = USER_ROLE_COURIER
+    is_staff = False
+
+    class Meta:
+        verbose_name = _('courier')
+        verbose_name_plural = _('couriers')
+
+    def __str__(self):
+        return self.email.__str__()
 
 
 class Card(models.Model):

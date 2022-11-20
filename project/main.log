@@ -1,0 +1,14 @@
+INFO -- 2022-11-20 17:37:13,040: categories list is returned
+INFO -- 2022-11-20 17:43:58,481: cart is returned, user id: 7
+INFO -- 2022-11-20 17:46:31,763: orders are returned
+ERROR -- 2022-11-20 17:46:35,079: order is not found, id: 1
+INFO -- 2022-11-20 17:46:59,569: orders are returned
+INFO -- 2022-11-20 17:47:14,289: order is changed, id: 1
+INFO -- 2022-11-20 17:47:20,219: orders are returned
+ERROR -- 2022-11-20 17:47:27,782: order is not found, id: 7
+ERROR -- 2022-11-20 17:47:38,402: order is not found, id: 7
+INFO -- 2022-11-20 17:47:40,192: order is returned, id: 1
+INFO -- 2022-11-20 17:47:44,822: order is changed, id: 1
+INFO -- 2022-11-20 17:47:50,637: orders are returned
+INFO -- 2022-11-20 17:47:58,339: order is changed, id: 1
+INFO -- 2022-11-20 17:51:06,654: category is returned, id: 1

@@ -3,8 +3,18 @@ from django.dispatch import receiver
 import sys
 import os
 sys.path.append(os.getcwd())
-from .models import Cart
+from .models import Order, Cart
 from auth_.models import Client
+
+
+
+@receiver(post_save, sender=Order)
+def order_created(sender, instance, created, **kwargs):
+    if created:
+        client = instance.client
+        products = Cart.objects.get(client=client).products
+        instance.products.add(*products.values_list(flat=True))
+        products.clear()
 
 
 @receiver(post_save, sender=Client)

@@ -1,0 +1,1693 @@
+{
+	"info": {
+		"_postman_id": "181d524e-123f-481c-aeac-746057972108",
+		"name": "FInal-Django2022",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15289761"
+	},
+	"item": [
+		{
+			"name": "E-commerce store for online shopping",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let response=JSON.parse(responseBody);",
+											"postman.setEnvironmentVariable(\"token\",response.token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\":\"courier1@gmail.com\",\n    \"password\":\"1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Client",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									},
+									{
+										"key": "address",
+										"value": "client1@gmail.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "passwors",
+										"value": "client1",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "client4@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "client4",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+777777777",
+											"type": "text"
+										},
+										{
+											"key": "address",
+											"value": "Omarova",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/clients/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"clients",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Courier",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "courier1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+7988878777",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "10000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/couriers/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"couriers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Staff",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "staff1@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "staff1",
+											"type": "text"
+										},
+										{
+											"key": "phone",
+											"value": "+799888",
+											"type": "text"
+										},
+										{
+											"key": "salary",
+											"value": "1000",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/auth/staff/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"auth",
+										"staff",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Client",
+					"item": [
+						{
+							"name": "Profile",
+							"item": [
+								{
+									"name": "Profile_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/profile/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"profile",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Profile_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"bio\":\"First2\" ,\n    \"birth_date\": null,\n    \"user\": {\n        \"email\": \"client2@gmail.com\",\n        \"first_name\": \"Aliszz\",\n        \"last_name\": null,\n        \"phone\": \"+712324789\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/profile/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"profile",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Card",
+							"item": [
+								{
+									"name": "Card_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/card/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"card",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Card_updated",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"number\": null,\n    \"expire_date\": null,\n    \"balance\": 1466,\n    \"cvv\": null,\n    \"full_name\": null\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/card/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"card",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Cart",
+							"item": [
+								{
+									"name": "Cart_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/cart/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"cart",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cart_update",
+									"request": {
+										"method": "PATCH",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"products\": [],\n    \"client\": {\n        \"email\": \"client2@gmail.com\",\n        \"first_name\": null,\n        \"last_name\": null,\n        \"phone\": \"+777777778\",\n        \"address\": \"Omarova Updated!\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/cart/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"cart",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Order",
+							"item": [
+								{
+									"name": "Order_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Order_create",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"client\": {\n            \"email\": \"client9@gmail.com\",\n            \"first_name\": null,\n            \"last_name\": null,\n            \"phone\": \"+777777777\",\n            \"address\": \"Omarova\"\n        },\n        \"courier\": {\n            \"email\": \"courier1@gmail.com\",\n            \"first_name\": null,\n            \"last_name\": null,\n            \"phone\": \"+7988878777\",\n            \"salary\": 10000,\n            \"review\": 0\n        },\n        \"products\": [\n            {\n                \"name\": \"Product3\",\n                \"price\": 69,\n                \"image\": \"/media/product_photos/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2022-04-25_%D0%B2_22.26.55.png\",\n                \"description\": \"Product1\",\n                \"category\": 1\n            }\n        ],\n        \"is_delivered\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Order_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Order_delete",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/3",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Category",
+							"item": [
+								{
+									"name": "category_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "category_detailed",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/2",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												"2"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Product",
+							"item": [
+								{
+									"name": "Product_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/products/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"products",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Product_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/products/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"products",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Client",
+							"item": [
+								{
+									"name": "Client_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/clients/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"clients",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Client_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "email",
+													"value": "client4@gmail.com",
+													"type": "text"
+												},
+												{
+													"key": "password",
+													"value": "client4",
+													"type": "text"
+												},
+												{
+													"key": "phone",
+													"value": "+723456778123",
+													"type": "text"
+												},
+												{
+													"key": "address",
+													"value": "Omarova",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/clients/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"clients",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Wear",
+							"item": [
+								{
+									"name": "Wear_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/wear/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"wear",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Food",
+							"item": [
+								{
+									"name": "Food_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/food/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"food",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Staff",
+					"item": [
+						{
+							"name": "Wear",
+							"item": [
+								{
+									"name": "Wear_create",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "T-shirt",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "T-shirt",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": "baw0eUPCA/Снимок экрана 2022-04-25 в 22.26.55.png"
+												},
+												{
+													"key": "category",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "size",
+													"value": "LL",
+													"type": "text"
+												},
+												{
+													"key": "materials",
+													"value": "Coton",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/wear/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"wear",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wear_delete",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/wear/7/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"wear",
+												"7",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Food",
+							"item": [
+								{
+									"name": "Food_create",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "pizza",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "pizza",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": "bEM6SwmUn/Снимок экрана 2022-04-25 в 22.26.55.png"
+												},
+												{
+													"key": "category",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "ingredients",
+													"value": "meat",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/food/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"food",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Food_delete",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/food/8/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"food",
+												"8",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Category",
+							"item": [
+								{
+									"name": "Category_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Category_update",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"name\": \"Category4\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Category_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Category_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"name\": \"Category3 Updated Again\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Category_delete",
+									"request": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Courier",
+					"item": [
+						{
+							"name": "Profile",
+							"item": [
+								{
+									"name": "Profile_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/auth/profile",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"profile"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Profile_updated",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "bio",
+													"value": "courier2-updated",
+													"type": "text"
+												},
+												{
+													"key": "birth_date",
+													"value": "2022-05-04",
+													"type": "text"
+												},
+												{
+													"key": "user",
+													"value": "courier2@gmail.com",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/auth/profile/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"auth",
+												"profile",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Order",
+							"item": [
+								{
+									"name": "Order_liist",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Order_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Order_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n        \"client\": {\n            \"email\": \"client9@gmail.com\",\n            \"first_name\": null,\n            \"last_name\": null,\n            \"phone\": \"+777777777\",\n            \"address\": \"Omarova\"\n        },\n        \"courier\": {\n            \"email\": \"courier1@gmail.com\",\n            \"first_name\": null,\n            \"last_name\": null,\n            \"phone\": \"+7988878777\",\n            \"salary\": 999,\n            \"review\": 0\n        },\n        \"products\": [\n            {\n                \"name\": \"Product3\",\n                \"price\": 69,\n                \"image\": \"/media/product_photos/%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA_%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0_2022-04-25_%D0%B2_22.26.55.png\",\n                \"description\": \"Product1\",\n                \"category\": 1\n            }\n        ],\n        \"is_delivered\": false\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Food",
+					"item": [
+						{
+							"name": "Food_list",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/main/food/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"main",
+										"food",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Food_detail",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/main/food/5",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"main",
+										"food",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Food_update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "JWT {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Ice-Cream updated",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Ice-Cream",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "1000",
+											"type": "text"
+										},
+										{
+											"key": "image",
+											"type": "file",
+											"src": "bEM6SwmUn/Снимок экрана 2022-04-25 в 22.26.55.png"
+										},
+										{
+											"key": "category",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "ingredients",
+											"value": "meat",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/main/food/3/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"main",
+										"food",
+										"3",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Admin",
+					"item": [
+						{
+							"name": "Category",
+							"item": [
+								{
+									"name": "category_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "category_create",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "Category4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "category_detailed",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Category_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "Category3 Updated!",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/categories/1",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"categories",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Wear",
+							"item": [
+								{
+									"name": "Wear_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/wear/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"wear",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wear_detail",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/wear/5",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"wear",
+												"5"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Wear_update",
+									"request": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "name",
+													"value": "Cap",
+													"type": "text"
+												},
+												{
+													"key": "description",
+													"value": "Cap Updated",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "1000",
+													"type": "text"
+												},
+												{
+													"key": "image",
+													"type": "file",
+													"src": "baw0eUPCA/Снимок экрана 2022-04-25 в 22.26.55.png"
+												},
+												{
+													"key": "category",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "size",
+													"value": "LL",
+													"type": "text"
+												},
+												{
+													"key": "materials",
+													"value": "Coton",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{BASE_URL}}/main/wear/5/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"wear",
+												"5",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Order",
+							"item": [
+								{
+									"name": "Order_list",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "JWT {{token}}",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{BASE_URL}}/main/orders/",
+											"host": [
+												"{{BASE_URL}}"
+											],
+											"path": [
+												"main",
+												"orders",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

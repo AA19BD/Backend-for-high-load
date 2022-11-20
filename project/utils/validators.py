@@ -14,7 +14,6 @@ def validate_size(value):
     if len(value) >= MAX_FILE_SIZE:
         raise ValidationError(f'max file size is: {MAX_FILE_SIZE}')
 
-
 def validate_extension(value):
     split_ext = os.path.splitext(value.name)
 

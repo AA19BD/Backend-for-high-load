@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import MainUser, Client, Card
+from .models import MainUser, Client, Staff, Courier, Profile, Card
 
 
 class MainUserSerializer(serializers.ModelSerializer):
@@ -20,9 +20,24 @@ class ClientSerializer(MainUserSerializer):
         fields = MainUserSerializer.Meta.fields + ('address',)
 
 
+class CourierSerializer(MainUserSerializer):
+    class Meta:
+        model = Courier
+        fields = MainUserSerializer.Meta.fields + ('salary', 'review',)
+
+
+class StaffSerializer(MainUserSerializer):
+    class Meta:
+        model = Staff
+        fields = MainUserSerializer.Meta.fields + ('salary',)
+
+
 class ProfileSerializer(serializers.Serializer):
     id = serializers.IntegerField()
     bio = serializers.CharField()
     birth_date = serializers.DateField()
     user = MainUserSerializer()
 
+    # class Meta:
+    #     model = Profile
+    #     fields = ('id', 'bio', 'birth_date', 'user')
