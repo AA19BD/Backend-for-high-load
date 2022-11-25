@@ -1,4 +1,4 @@
-## Done by Abylai Aitbanov 19B030059
+## Done by Abylai Aitbanov 19B030059 and Aip Alisher 19B030149
 ## E-commerce store for online shopping
 
 ## DB Diagram
